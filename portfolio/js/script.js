@@ -49,12 +49,12 @@ $(function () {
       $(".portfolio-title").css("color", "#0b1d2a"); // 要素のセレクタとして適切なものを指定してください
     }, 2900); // 3秒は3000ミリ秒です
   });
-  // $(document).ready(function () {
-  //   // 4秒後に文字を横向きに回転させる
-  //   setTimeout(function () {
-  //     $(".portfolio-title").addClass("rotate"); // 回転のためのクラスを追加
-  //   }, 4000);
-  // });
+  $(document).ready(function () {
+    // 4秒後に文字を横向きに回転させる
+    setTimeout(function () {
+      $(".portfolio-title").addClass("rotate"); // 回転のためのクラスを追加
+    }, 4000);
+  });
 
   $(document).ready(function () {
     setTimeout(function () {
