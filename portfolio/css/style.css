@@ -3,7 +3,7 @@ body {
     "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   font-size: 15px;
   letter-spacing: 0.05em;
-  color: #333;
+  color: #0b1d2a;
 }
 
 a {
@@ -58,7 +58,7 @@ img {
   margin-bottom: 40px;
   text-align: center;
   letter-spacing: 0.05em;
-  color: #333;
+  color: #0b1d2a;
 }
 
 .lead {
@@ -95,7 +95,7 @@ img {
 }
 
 .header-logo a {
-  color: #333;
+  color: #0b1d2a;
 }
 
 .gnav-list {
@@ -116,7 +116,7 @@ img {
   padding: 5px 0;
   transition: 0.3s;
   letter-spacing: 0.05em;
-  color: #333;
+  color: #0b1d2a;
 }
 .gnav-item a:after {
   position: absolute;
@@ -128,7 +128,7 @@ img {
   transition: 0.3s;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  background-color: #333;
+  background-color: #0b1d2a;
 }
 
 .gnav-item a:hover:after {
@@ -138,34 +138,54 @@ img {
 /*--------------------------------
  メインビジュアル
 ---------------------------------*/
-.mv {
+/* .mv {
   display: flex;
   align-items: center;
   justify-content: center;
   height: auto;
   text-align: center;
-}
+} */
 
 .mv-container {
   position: relative;
   width: 100%;
   height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.current-image,
-.next-image {
+.mv-container img {
+  width: 768px;
+  height: 768px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  transform: translate(-50%, -50%) rotate(0deg);
+  border-radius: 50%;
+}
+
+/* .mv-container img:nth-child(1) {
+  z-index: 2;
+} */
+
+.mv-container img:nth-child(2) {
+  position: absolute;
+  transform: translate(-50%, -60%);
+  z-index: 1;
 }
 
 .next-image {
-  opacity: 0;
-  z-index: 1;
+  animation: rotate 2s linear infinite;
+}
+
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .text-container {
@@ -175,156 +195,108 @@ img {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
-.letter {
-  display: inline-block;
-  font-family: "Baskerville Display PT Italic", serif;
+.portfolio-title {
+  /* display: inline-block; */
+  font-family: "Roboto Slab", serif;
   font-size: 72px;
-  color: white;
-  opacity: 0;
-  animation: fadein 2s ease-in-out forwards;
+  color: #ffffff;
+  opacity: 1;
+  transform-origin: center;
 }
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-/* アニメーション1回目 */
-.letter:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.letter:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.letter:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.letter:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-.letter:nth-child(5) {
-  animation-delay: 0.5s;
-}
-
-.letter:nth-child(6) {
-  animation-delay: 0.6s;
-}
-
-.letter:nth-child(7) {
-  animation-delay: 0.7s;
-}
-
-.letter:nth-child(8) {
-  animation-delay: 0.8s;
-}
-
-.letter:nth-child(9) {
-  animation-delay: 0.9s;
-}
-
-/* 画像切り替えアニメーション */
-.current-image.fade-out {
-  animation: fade-out 1s ease-in-out forwards;
-}
-
-.next-image.fade-in {
-  animation: mask 1s ease-in-out forwards;
-}
-
-@keyframes mask {
-  0% {
-    clip-path: circle(0% at 50% 50%);
-  }
-
-  50% {
-    clip-path: circle(50% at 50% 50%);
-  }
-
-  100% {
-    clip-path: circle(100% at 50% 50%);
-  }
-}
-
-/* アニメーション完了後 */
-.current-image.fade-out,
-.next-image.fade-in {
-  z-index: 0;
-}
-
-.next-image.fade-in {
-  z-index: 1;
-}
-
-
-.message {
+.sub-title {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  top: 20%;
+  left: 16%;
+  /* transform: translate(-50%, -50%); */
+  font-family: "Roboto Slab", serif;
+  font-size: 54px;
+  color: #0b1d2a;
+  font-weight: bold;
   opacity: 0;
-  animation: float-up 1s ease-in-out forwards;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 20px;
+  border-radius: 10px;
 }
-.portfolio-title  {
-  
-  top: 50%;
+
+/* portfolio-title アニメーション */
+.text-move {
+  opacity: 0;
+  display: inline-block;
+  transform: scale(1.25) translate(8px, 4px);
+  font-size: 80px;
+  letter-spacing: 0.02em;
+}
+
+.text-move:nth-child(1) {
+  transition: opacity 1.2s ease 0.1s, transform 1.2s ease 0.2s;
+}
+.text-move:nth-child(2) {
+  transition: opacity 1.2s ease 0.2s, transform 1.2s ease 0.25s;
+}
+.text-move:nth-child(3) {
+  transition: opacity 1.2s ease 0.25s, transform 1.2s ease 0.3s;
+}
+.text-move:nth-child(4) {
+  transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.35s;
+}
+.text-move:nth-child(5) {
+  transition: opacity 1.2s ease 0.35s, transform 1.2s ease 0.4s;
+}
+.text-move:nth-child(6) {
+  transition: opacity 1.2s ease 0.4s, transform 1.2s ease 0.45s;
+}
+.text-move:nth-child(7) {
+  transition: opacity 1.2s ease 0.45s, transform 1.2s ease 0.5s;
+}
+.text-move:nth-child(8) {
+  transition: opacity 1.2s ease 0.5s, transform 1.2s ease 0.55s;
+}
+.text-move:nth-child(9) {
+  transition: opacity 1.2s ease 0.55s, transform 1.2s ease 0.6s;
+}
+.portfolio-title.active {
+  opacity: 1;
+}
+
+.portfolio-title.active .text-move {
+  opacity: 1;
+  transform: scale(1) translate(0);
+}
+
+.portfolio-title.rotate {
+  transition: transform 1s ease;
+}
+.sub-title.fadein {
+  transform: translateY(50px);
+  text-align: center;
+  opacity: 1;
+}
+
+.scroll-down-container {
+  position: fixed;
+  bottom: 20px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   text-align: center;
-  font-family: "Baskerville Display PT Italic", serif;
-  font-size: 72px;
-  color: 000000;
+  z-index: 9999;
+  opacity: 0;
 }
 
-.portfolio-sub-title {
-   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  text-align: center;
-  font: size 24px;
-  color: 000000;
+.scroll-down-container.fadein {
+  opacity: 1;
 }
-@keyframes rotate {
-  from {
-    transform: rotateY(360deg);
-  }
-
-  to {
-    transform: rotateY(0deg);
-  }
+.scroll-down-text {
+  font-weight: bold;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.5);
 }
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes float-up {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
+.scroll-down-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid #333;
+  margin: 0 auto;
 }
 
 /*--------------------------------
@@ -340,7 +312,7 @@ img {
   width: 31.74603%;
   margin-right: 1.5873%;
   margin-bottom: 40px;
-  color: #333;
+  color: #0b1d2a;
 }
 
 .works-item:hover {
@@ -468,7 +440,7 @@ img {
 ---------------------------------*/
 .footer {
   padding: 30px;
-  background-color: #333;
+  background-color: #0b1d2a;
 }
 
 .copyright {
@@ -525,7 +497,7 @@ img {
   height: 100%;
   content: "";
   border-radius: 3px;
-  background-color: #333;
+  background-color: #0b1d2a;
 }
 
 .article-body p {
